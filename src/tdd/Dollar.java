@@ -10,7 +10,12 @@ public class Dollar {
 	public int getAmount() {
 		return amount;
 	}
+	
+	Dollar times(int multiplier) {
+		return new Dollar(amount * multiplier);
+	}
+	/*
 	void times(int multiplier) {
 		amount*=multiplier;
-	}
+	}*/
 }
