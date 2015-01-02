@@ -16,6 +16,11 @@ public class MoneyTest {
 	
 	@Test
 	public void testEqualsObject() {
+		assertFalse(Money.getDollar(5).equals(Money.getDollar(6)));
+		assertTrue(Money.getDollar(5).equals(Money.getDollar(5)));
+		assertFalse(Money.getFranc(6).equals(Money.getDollar(6)));
+		
+		/*
 		assertTrue(Money.getDollar(5).equals(Money.getDollar(5)));
 		assertFalse(Money.getDollar(5).equals(Money.getDollar(6)));
 		assertTrue(new Franc(5,"CHF").equals(new Franc(5,"CHF")));
@@ -23,7 +28,7 @@ public class MoneyTest {
 		assertFalse(new Franc(5,"CHF").equals(Money.getDollar(5)));
 		assertTrue(new Dollar(5,"USD").equals(Money.getDollar(5)));
 		assertTrue(new Franc(5,"CHF").equals(Money.getFranc(5)));
-		
+		*/
 		/*
 		assertTrue(new Dollar(5).equals(new Dollar(5)));
 		assertFalse(new Dollar(5).equals(new Dollar(6)));

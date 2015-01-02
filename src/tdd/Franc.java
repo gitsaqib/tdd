@@ -1,12 +1,15 @@
 package tdd;
 
-public class Franc extends Money {
+public class Franc //extends Money 
+{
 	/*
 	private int amount;
 	*/
+	/*
 	public Franc(int amount, String currency) {
 		super(amount, currency);
 	}
+	*/
 	/*
 	public Franc(int amount) {
 		super();
@@ -24,11 +27,11 @@ public class Franc extends Money {
 		//return true;
 	}
 	*/
-
+/*
 	Money times(int multiplier) {
 		return Money.getFranc(getAmount() * multiplier);
 	}
-	
+	*/
 	/*
 	Franc times(int multiplier) {
 		return new Franc(getAmount() * multiplier);

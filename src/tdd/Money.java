@@ -1,6 +1,6 @@
 package tdd;
 
-public abstract class Money {
+public class Money {
 	private int amount;
 	private String currency;
 	
@@ -24,18 +24,20 @@ public abstract class Money {
 	public String getCurrency() {
 		return currency;
 	}
-
+	
+	public Money times(int multiplier)
+	{
+		return new Money(getAmount()*multiplier,this.getCurrency());
+	}
+	public static Money getDollar(int amount) {
+		return new Money(amount,"USD");
+	}
+	public static Money getFranc(int amount) {
+		return new Money(amount,"CHF");
+	}
 	public boolean equals(Object object) {
 		Money money = (Money) object;
-		return amount == money.amount && getClass().equals(money.getClass());
-	}
-	abstract Money times(int multiplier);
-	
-	public static Dollar getDollar(int amount) {
-		return new Dollar(amount,"USD");
-	}
-	public static Franc getFranc(int amount) {
-		return new Franc(amount,"CHF");
+		return amount == money.amount && this.getCurrency().equals(money.getCurrency());
 	}
 	/*
 	public boolean equals(Object object) {
@@ -43,4 +45,5 @@ public abstract class Money {
 		return amount == dollar.getAmount();
 	}
 	*/
+	
 }
