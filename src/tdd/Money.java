@@ -16,7 +16,13 @@ public class Money {
 		this.amount = amount;
 	}
 	public boolean equals(Object object) {
+		Money money = (Money) object;
+		return amount == money.amount && getClass().equals(money.getClass());
+	}
+	/*
+	public boolean equals(Object object) {
 		Money dollar= (Money) object;
 		return amount == dollar.getAmount();
 	}
+	*/
 }
