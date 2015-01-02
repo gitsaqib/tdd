@@ -40,5 +40,34 @@ public class MoneyTest {
 		//fail("Not yet implemented");
 		*/
 	}
-
+	@Test
+	public void testReduceSum() {
+		Expression sum= new Sum(Money.getDollar(3), Money.getDollar(4));
+		Bank bank= new Bank();
+		Money result= bank.reduce(sum, "USD");
+		assertEquals(Money.getDollar(7), result);
+	}
+	
+	@Test
+	public void testSimpleAddition() {
+		
+		Money five = Money.getDollar(5);
+		Expression sum= five.plus(five);
+		Bank bank= new Bank();
+		Money reduced= bank.reduce(sum, "USD");
+		assertEquals(Money.getDollar(10), reduced);
+		
+		/*
+		Money sum= Money.getDollar(5).plus(Money.getDollar(5));
+		assertEquals(Money.getDollar(10), sum);
+		*/
+	}
+	@Test
+	public void testPlusReturnsSum() {
+		Money five= Money.getDollar(5);
+		Expression result= five.plus(five);
+		Sum sum= (Sum) result;
+		assertEquals(five, sum.getAugend());
+		assertEquals(five, sum.getAddend());
+	}
 }

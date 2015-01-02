@@ -1,6 +1,6 @@
 package tdd;
 
-public class Money {
+public class Money implements Expression{
 	private int amount;
 	private String currency;
 	
@@ -45,5 +45,10 @@ public class Money {
 		return amount == dollar.getAmount();
 	}
 	*/
-	
+	public Expression plus(Money addend) {
+		return new Sum(this, addend);
+		/*
+		return new Money(amount + addend.amount, currency);
+		*/
+	}
 }
