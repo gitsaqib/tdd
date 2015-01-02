@@ -3,8 +3,8 @@ package tdd;
 public class Dollar extends Money{
 	//private int amount;
 
-	public Dollar(int amount) {
-		super(amount);
+	public Dollar(int amount, String currency) {
+		super(amount, currency);
 	}
 	/*
 	public Dollar(int amount) {
@@ -25,8 +25,8 @@ public class Dollar extends Money{
 	}
 	*/
 
-	Dollar times(int multiplier) {
-		return new Dollar(getAmount() * multiplier);
+	Money times(int multiplier) {
+		return Money.getDollar(getAmount() * multiplier);
 	}
 	
 	/*
