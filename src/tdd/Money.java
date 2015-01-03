@@ -51,7 +51,18 @@ public class Money implements Expression{
 		return new Money(amount + addend.amount, currency);
 		*/
 	}
+
+	@Override
+	public Money reduce(Bank bank, String toCurrency) {
+		int rate = (this.getCurrency().equals("CHF") && toCurrency.equals("USD"))
+				? 2
+				: 1;
+		return new Money(amount / rate, toCurrency);
+	}
+	
+	/*
 	public Money reduce(String currency) {
 		return this;
 	}
+	*/
 }

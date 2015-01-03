@@ -44,7 +44,8 @@ public class MoneyTest {
 	public void testReduceSum() {
 		Expression sum= new Sum(Money.getDollar(3), Money.getDollar(4));
 		Bank bank= new Bank();
-		Money result= bank.reduce(sum, "USD");
+		bank.addRate("CHF", "USD", 2);
+		Money result= sum.reduce(bank, "USD");
 		assertEquals(Money.getDollar(7), result);
 	}
 	
@@ -54,7 +55,8 @@ public class MoneyTest {
 		Money five = Money.getDollar(5);
 		Expression sum= five.plus(five);
 		Bank bank= new Bank();
-		Money reduced= bank.reduce(sum, "USD");
+		bank.addRate("CHF", "USD", 2);
+		Money reduced= sum.reduce(bank, "USD");
 		assertEquals(Money.getDollar(10), reduced);
 		
 		/*
@@ -73,7 +75,14 @@ public class MoneyTest {
 	@Test
 	public void testReduceMoney() {
 		Bank bank= new Bank();
-		Money result= bank.reduce(Money.getDollar(1), "USD");
+		Money result= Money.getDollar(1).reduce(bank, "USD");
+		assertEquals(Money.getDollar(1), result);
+	}
+	@Test
+	public void testReduceMoneyDifferentCurrency() {
+		Bank bank= new Bank();
+		bank.addRate("CHF", "USD", 2);
+		Money result= Money.getFranc(2).reduce(bank, "USD");
 		assertEquals(Money.getDollar(1), result);
 	}
 }

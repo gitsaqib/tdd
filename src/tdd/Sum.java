@@ -20,9 +20,16 @@ public class Sum implements Expression {
 	public void setAddend(Money addend) {
 		this.addend = addend;
 	}
+	/*
 	public Money reduce(String currency)
 	{
 		int amount= augend.getAmount() + addend.getAmount();
 		return new Money(amount, currency);
+	}
+	*/
+	@Override
+	public Money reduce(Bank bank, String to) {
+		int amount= augend.getAmount() + addend.getAmount();
+		return new Money(amount, to);
 	}
 }
