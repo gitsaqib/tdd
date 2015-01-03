@@ -70,4 +70,10 @@ public class MoneyTest {
 		assertEquals(five, sum.getAugend());
 		assertEquals(five, sum.getAddend());
 	}
+	@Test
+	public void testReduceMoney() {
+		Bank bank= new Bank();
+		Money result= bank.reduce(Money.getDollar(1), "USD");
+		assertEquals(Money.getDollar(1), result);
+	}
 }

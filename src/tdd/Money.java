@@ -51,4 +51,7 @@ public class Money implements Expression{
 		return new Money(amount + addend.amount, currency);
 		*/
 	}
+	public Money reduce(String currency) {
+		return this;
+	}
 }
