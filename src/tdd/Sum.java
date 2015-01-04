@@ -1,23 +1,23 @@
 package tdd;
 
 public class Sum implements Expression {
-	private Money augend;
-	private Money addend;
-	public Sum(Money augend, Money addend) {
+	private Expression augend;
+	private Expression addend;
+	public Sum(Expression augend, Expression addend) {
 		super();
 		this.augend = augend;
 		this.addend = addend;
 	}
-	public Money getAugend() {
+	public Expression getAugend() {
 		return augend;
 	}
-	public void setAugend(Money augend) {
+	public void setAugend(Expression augend) {
 		this.augend = augend;
 	}
-	public Money getAddend() {
+	public Expression getAddend() {
 		return addend;
 	}
-	public void setAddend(Money addend) {
+	public void setAddend(Expression addend) {
 		this.addend = addend;
 	}
 	/*
@@ -29,7 +29,17 @@ public class Sum implements Expression {
 	*/
 	@Override
 	public Money reduce(Bank bank, String to) {
+		int amount= augend.reduce(bank, to).getAmount()
+				+ addend.reduce(bank, to).getAmount();
+				return new Money(amount, to);
+				
+		/*
 		int amount= augend.getAmount() + addend.getAmount();
 		return new Money(amount, to);
+		*/
+	}
+	@Override
+	public Expression plus(Expression addend) {
+		return new Sum(this, addend);
 	}
 }
